@@ -55,6 +55,25 @@
                 
             </ul>
         </li>
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/categories')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon fa fa-file"></i>
+                <p>
+                    Manage Category
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('categories.view') }}" class="nav-link {{ ($route=='categories.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Category</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
 
     </ul>
 </nav>
