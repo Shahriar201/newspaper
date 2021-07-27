@@ -42,7 +42,6 @@ class ProfileController extends Controller
         $data->save();
 
         return redirect()->route('profiles.view')->with('success', 'Profile updated successfully');
-
     }
 
     public function passwordView(){

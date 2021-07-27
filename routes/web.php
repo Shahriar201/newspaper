@@ -3,16 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\FrontendController@index');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('users')->group(function(){
-
     Route::get('/view', 'Backend\UserController@view')->name('users.view');
     Route::get('/add', 'Backend\UserController@add')->name('users.add');
     Route::post('/store', 'Backend\UserController@store')->name('users.store');  
@@ -21,8 +18,7 @@ Route::prefix('users')->group(function(){
     Route::post('/delete', 'Backend\UserController@delete')->name('users.delete');      
 });
 
-Route::prefix('profiles')->group(function(){
-    
+Route::prefix('profiles')->group(function(){   
     Route::get('/view', 'Backend\ProfileController@view')->name('profiles.view');
     Route::get('/edit', 'Backend\ProfileController@edit')->name('profiles.edit');
     Route::post('/store', 'Backend\ProfileController@update')->name('profiles.update');
@@ -32,7 +28,6 @@ Route::prefix('profiles')->group(function(){
 });
 
 Route::prefix('categories')->group(function(){
-
     Route::get('/view', 'Backend\CategoryController@view')->name('categories.view');
     Route::get('/add', 'Backend\CategoryController@add')->name('categories.add');
     Route::post('/store', 'Backend\CategoryController@store')->name('categories.store');  
