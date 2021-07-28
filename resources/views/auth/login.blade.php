@@ -141,6 +141,12 @@
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 	            <button type="submit" name="button" class="btn login_btn">Login</button>
 				            </div>
+
+							{{-- <div style="text-aling: center; margin-top: 10px;">
+								Login Using
+								<a href="/login/github">Github</a>
+								<a href="/login/google">Google</a>
+							</div> --}}
 					</form>
 				</div>
 		

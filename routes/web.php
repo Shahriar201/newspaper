@@ -7,6 +7,10 @@ Route::get('/', 'Frontend\FrontendController@index');
 
 Auth::routes(['register' => false]);
 
+//Google Login
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('users')->group(function(){
