@@ -8,8 +8,8 @@ Route::get('/', 'Frontend\FrontendController@index');
 Auth::routes(['register' => false]);
 
 //Google Login
-Route::get('login/google', 'Auth\LoginController@redirectToProvider');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/{website}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{website}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

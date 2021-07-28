@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -39,16 +41,37 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider()
+    public function redirectToProvider($website)
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver($website)->redirect();
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($website)
     {
-        $user = Socialite::driver('google')->user();
+        if ($website == 'google') {   
+            $user = Socialite::driver($website)->user();
+        }else {
+            $user = Socialite::driver($website)->stateless()->user();
+        }
+        // login if user in the database
+        $user_found = User::where('email', $user->getEmail())->first();
+        if ($user_found) {
+            Auth::login($user_found);
+            return redirect('/');
+        }else {
+            # make a new user
+            $new_user = new User();
+            $new_user->name = $user->getName();
+            $new_user->email = $user->getEmail();
+            $new_user->password = bcrypt(123456);
+            // dd($new_user);
+            if ($new_user->save()) {
+                Auth::login($new_user);
+                return redirect('/home');
+            }
+        }
         // return redirect()->route('home');
-        return $user->getName();
+        // return $user->getName();
         // dd($user);
     }
 }

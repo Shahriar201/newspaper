@@ -95,6 +95,12 @@
 					<form method="POST" action="{{ route('login') }}">
                         @csrf
 
+						<div style="text-aling: center; margin-bottom: 10px;">
+							Login Using
+							{{-- <a href="/login/github">Github</a> --}}
+							<a href="/newspaper/login/google">Google</a>
+						</div>
+
                         @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -142,11 +148,7 @@
 				 	            <button type="submit" name="button" class="btn login_btn">Login</button>
 				            </div>
 
-							{{-- <div style="text-aling: center; margin-top: 10px;">
-								Login Using
-								<a href="/login/github">Github</a>
-								<a href="/login/google">Google</a>
-							</div> --}}
+							
 					</form>
 				</div>
 		

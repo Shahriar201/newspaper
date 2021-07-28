@@ -31,8 +31,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '991005950081-hc9vnkivsgv69hmd7bu7vt2aa9d1aqk2.apps.googleusercontent.com',
-        'client_secret' => 'uIBk7AN6Om0MX3jcC55dwPUO',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => 'http://localhost/newspaper/login/google/callback',
     ],
 
