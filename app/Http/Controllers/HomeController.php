@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        return view('backend.layouts.home');
+        $users = User::all();
+        // dd($users->toArray());
+        return view('backend.layouts.home', compact('users'));
     }
 }
